@@ -22,6 +22,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    //test
     CGFloat width = [UIScreen mainScreen].bounds.size.width;
     
     NSArray *imagesURL = @[
