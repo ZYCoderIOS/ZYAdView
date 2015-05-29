@@ -21,13 +21,13 @@
 #define kAdViewWidth  _adScrollView.bounds.size.width
 //广告的高度
 #define kAdViewHeight  _adScrollView.bounds.size.height
- //由于_pageControl是添加进父视图的,所以实际位置要参考,滚动视图的y坐标
+//由于_pageControl是添加进父视图的,所以实际位置要参考,滚动视图的y坐标
 #define HIGHT _adScrollView.bounds.origin.y
 
 @interface AdView ()
 {
     //广告的label
-//    UILabel * _adLabel;
+    //    UILabel * _adLabel;
     //循环滚动的三个视图
     UIImageView * _leftImageView;
     UIImageView * _centerImageView;
@@ -37,9 +37,9 @@
     //用于确定滚动式由人导致的还是计时器到了,系统帮我们滚动的,YES,则为系统滚动,NO则为客户滚动(ps.在客户端中客户滚动一个广告后,这个广告的计时器要归0并重新计时)
     BOOL _isTimeUp;
     //为每一个图片添加一个广告语(可选)
-//    UILabel * _leftAdLabel;
+    //    UILabel * _leftAdLabel;
     
-//    UILabel * _rightAdLabel;
+    //    UILabel * _rightAdLabel;
 }
 
 @property (nonatomic,assign) NSUInteger centerImageIndex;
@@ -84,7 +84,7 @@
         _centerImageView.userInteractionEnabled = YES;
         
         [_centerImageView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap)]];
-
+        
         [_adScrollView addSubview:_centerImageView];
         
         
@@ -134,17 +134,36 @@
 
 + (id)adScrollViewWithFrame:(CGRect)frame imageLinkURL:(NSArray *)imageLinkURL pageControlShowStyle:(UIPageControlShowStyle)PageControlShowStyle
 {
-    AdView * adView = [AdView adScrollViewWithFrame:frame imageLinkURL:imageLinkURL placeHoderImageName:nil  pageControlShowStyle:PageControlShowStyle];
+    AdView * adView = [[AdView alloc]initWithFrame:frame];
+    [adView setimageLinkURL:imageLinkURL];
+    [adView setPageControlShowStyle:PageControlShowStyle];
     return adView;
 }
 
 + (id)adScrollViewWithFrame:(CGRect)frame imageLinkURL:(NSArray *)imageLinkURL placeHoderImageName:(NSString *)imageName pageControlShowStyle:(UIPageControlShowStyle)PageControlShowStyle
 {
-    
-    AdView * adView = [[AdView alloc]initWithFrame:frame];
+    NSMutableArray * imagePaths = [[NSMutableArray alloc]init];
+    for (NSString * imageName in imageLinkURL)
+    {
+        NSURL * imageURL = [NSURL URLWithString:imageName];
+        [imagePaths addObject:imageURL];
+    }
+    AdView * adView = [AdView adScrollViewWithFrame:frame imageLinkURL:imageLinkURL   pageControlShowStyle:PageControlShowStyle];
     adView.placeHoldImage = [UIImage imageNamed:imageName];
-    [adView setimageLinkURL:imageLinkURL];
-    [adView setPageControlShowStyle:PageControlShowStyle];
+    return adView;
+}
+
++ (id)adScrollViewWithFrame:(CGRect)frame localImageLinkURL:(NSArray *)imageLinkURL pageControlShowStyle:(UIPageControlShowStyle)PageControlShowStyle
+{
+    NSMutableArray * imagePaths = [[NSMutableArray alloc]init];
+    for (NSString * imageName in imageLinkURL)
+    {
+        NSString * path = [[NSBundle mainBundle] pathForResource:imageName ofType:nil];
+        NSAssert(path, @"图片名对应的图片不存在");
+        NSURL * imageURL = [NSURL fileURLWithPath:path];
+        [imagePaths addObject:imageURL];
+    }
+    AdView * adView = [AdView adScrollViewWithFrame:frame imageLinkURL:imagePaths   pageControlShowStyle:PageControlShowStyle];
     return adView;
 }
 
@@ -157,9 +176,9 @@
     centerImageIndex = 0;
     rightImageIndex = 1;
     
-    [_leftImageView sd_setImageWithURL:[NSURL URLWithString:imageLinkURL[leftImageIndex]] placeholderImage:self.placeHoldImage];
-    [_centerImageView sd_setImageWithURL:[NSURL URLWithString:imageLinkURL[centerImageIndex]] placeholderImage:self.placeHoldImage];
-    [_rightImageView sd_setImageWithURL:[NSURL URLWithString:imageLinkURL[rightImageIndex]]placeholderImage:self.placeHoldImage];
+    [_leftImageView sd_setImageWithURL:imageLinkURL[leftImageIndex] placeholderImage:self.placeHoldImage];
+    [_centerImageView sd_setImageWithURL:imageLinkURL[centerImageIndex] placeholderImage:self.placeHoldImage];
+    [_rightImageView sd_setImageWithURL:imageLinkURL[rightImageIndex] placeholderImage:self.placeHoldImage];
 }
 
 #pragma mark - 设置每个对应广告对应的广告语
@@ -244,7 +263,7 @@
 
 #pragma mark - 图片停止时,调用该函数使得滚动视图复用
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
-{    
+{
     if (_adScrollView.contentOffset.x == 0)
     {
         centerImageIndex = centerImageIndex - 1;
@@ -286,11 +305,11 @@
         return;
     }
     
-    [_leftImageView sd_setImageWithURL:[NSURL URLWithString:_imageLinkURL[leftImageIndex]] placeholderImage:self.placeHoldImage];
+    [_leftImageView sd_setImageWithURL:_imageLinkURL[leftImageIndex] placeholderImage:self.placeHoldImage];
     
-    [_centerImageView sd_setImageWithURL:[NSURL URLWithString:_imageLinkURL[centerImageIndex]] placeholderImage:self.placeHoldImage];
+    [_centerImageView sd_setImageWithURL:_imageLinkURL[centerImageIndex] placeholderImage:self.placeHoldImage];
     
-    [_rightImageView sd_setImageWithURL:[NSURL URLWithString:_imageLinkURL[rightImageIndex]] placeholderImage:self.placeHoldImage];
+    [_rightImageView sd_setImageWithURL:_imageLinkURL[rightImageIndex] placeholderImage:self.placeHoldImage];
     
     _pageControl.currentPage = centerImageIndex;
     
@@ -333,5 +352,4 @@
         _callBack(centerImageIndex,_imageLinkURL[centerImageIndex]);
     }
 }
-
 @end

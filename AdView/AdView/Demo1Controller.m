@@ -8,21 +8,22 @@
 
 
 
-#import "ViewController.h"
+#import "Demo1Controller.h"
 #import "AdView.h"
 
-@interface ViewController ()
+@interface Demo1Controller ()
 {
     AdView * adView;
 }
 @end
 
-@implementation ViewController
+@implementation Demo1Controller
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    //test
+    self.title = @"加载网络图片";
+    
     CGFloat width = [UIScreen mainScreen].bounds.size.width;
     
     NSArray *imagesURL = @[
@@ -36,18 +37,21 @@
                         @"代码在使用过程中出现问题",
                         @"您可以发邮件到qzycoder@163.com",
                         ];
-
+    
     //如果你的这个广告视图是添加到导航控制器子控制器的View上,请添加此句,否则可忽略此句
     self.automaticallyAdjustsScrollViewInsets = NO;
     
-    adView = [AdView adScrollViewWithFrame:CGRectMake(0, 64, width, 172) imageLinkURL:imagesURL placeHoderImageName:@"placeHoder.jpg" pageControlShowStyle:UIPageControlShowStyleLeft];
+    adView = [AdView adScrollViewWithFrame:CGRectMake(0, 64, width, 172)  \
+                              imageLinkURL:imagesURL\
+                       placeHoderImageName:@"placeHoder.jpg" \
+                      pageControlShowStyle:UIPageControlShowStyleLeft];
     
-//    是否需要支持定时循环滚动，默认为YES
-//    adView.isNeedCycleRoll = YES;
+    //    是否需要支持定时循环滚动，默认为YES
+    //    adView.isNeedCycleRoll = YES;
     
     [adView setAdTitleArray:titles withShowStyle:AdTitleShowStyleRight];
-//    设置图片滚动时间,默认3s
-//    adView.adMoveTime = 2.0;
+    //    设置图片滚动时间,默认3s
+    //    adView.adMoveTime = 2.0;
     
     //图片被点击后回调的方法
     adView.callBack = ^(NSInteger index,NSString * imageURL)

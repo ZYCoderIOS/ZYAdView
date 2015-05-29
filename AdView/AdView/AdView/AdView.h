@@ -119,7 +119,32 @@ typedef NS_ENUM(NSUInteger, AdTitleShowStyle)
  *  @param object 控件在那个类文件中
  *  @return 广告视图
  */
-+ (id)adScrollViewWithFrame:(CGRect)frame imageLinkURL:(NSArray *)imageLinkURL pageControlShowStyle:(UIPageControlShowStyle)PageControlShowStyle;
+//+ (id)adScrollViewWithFrame:(CGRect)frame imageLinkURL:(NSArray *)imageLinkURL pageControlShowStyle:(UIPageControlShowStyle)PageControlShowStyle;
 
+/**
+ *  @author ZY, 15-04-26
+ *
+ *  @brief  创建AdView对象
+ *
+ *  @param frame                设置Frame
+ *  @param imageLinkURL         图片链接地址数组,数组的每一项均为字符串
+ *  @param imageName            占位图片
+ *  @param PageControlShowStyle PageControl显示位置
+ *  @param object 控件在那个类文件中
+ *  @return 广告视图
+ */
 + (id)adScrollViewWithFrame:(CGRect)frame imageLinkURL:(NSArray *)imageLinkURL placeHoderImageName:(NSString *)imageName pageControlShowStyle:(UIPageControlShowStyle)PageControlShowStyle;
+
+/**
+ *  @author ZY, 15-04-26
+ *
+ *  @brief  创建AdView对象
+ *
+ *  @param frame                设置Frame
+ *  @param imageLinkURL         本地图片名称数组
+ *  @param PageControlShowStyle PageControl显示位置
+ *  @param object 控件在那个类文件中
+ *  @return 广告视图
+ */
++ (id)adScrollViewWithFrame:(CGRect)frame localImageLinkURL:(NSArray *)imageLinkURL pageControlShowStyle:(UIPageControlShowStyle)PageControlShowStyle;
 @end
