@@ -11,6 +11,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    
     self.title = @"加载本地图片";
     CGFloat width = [UIScreen mainScreen].bounds.size.width;
     NSArray *imagesURL = @[
