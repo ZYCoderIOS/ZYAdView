@@ -1,3 +1,5 @@
+![Screenshots_Row](https://github.com/ZYCoderIOS/master/ZYAdView/screenshot/screentshot.png)
+
 
 广告循环滚动
 类似淘宝，网易新闻首页广告栏效果，需要sdwebImage的支持，仅仅只需要额外导入一个类文件！使用方法如下：
