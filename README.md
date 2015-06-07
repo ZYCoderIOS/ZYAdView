@@ -1,4 +1,4 @@
-![Screenshots_Row](https://github.com/ZYCoderIOS/master/ZYAdView/screenshot/screentshot.png)
+![Screenshots_Row](https://github.com/ZYCoderIOS/ZYAdView/master/screenshot/screentshot.png)
 
 
 广告循环滚动
