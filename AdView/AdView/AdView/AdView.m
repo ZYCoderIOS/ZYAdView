@@ -171,14 +171,20 @@
 - (void)setimageLinkURL:(NSArray *)imageLinkURL
 {
     _imageLinkURL = imageLinkURL;
-    
     leftImageIndex = imageLinkURL.count-1;
     centerImageIndex = 0;
     rightImageIndex = 1;
+    if (imageLinkURL.count==1)
+    {//只有一张图片
+        rightImageIndex = 0;
+        _adScrollView.contentSize = CGSizeMake(kAdViewWidth, kAdViewHeight);
+        self.isNeedCycleRoll = NO;
+    }
     
     [_leftImageView sd_setImageWithURL:imageLinkURL[leftImageIndex] placeholderImage:self.placeHoldImage];
     [_centerImageView sd_setImageWithURL:imageLinkURL[centerImageIndex] placeholderImage:self.placeHoldImage];
     [_rightImageView sd_setImageWithURL:imageLinkURL[rightImageIndex] placeholderImage:self.placeHoldImage];
+    
 }
 
 #pragma mark - 设置每个对应广告对应的广告语
