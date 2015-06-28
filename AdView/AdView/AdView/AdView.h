@@ -76,7 +76,10 @@ typedef NS_ENUM(NSUInteger, AdTitleShowStyle)
  */
 @property (nonatomic,assign) BOOL isNeedCycleRoll;
 
-
+/**
+ *  广告切换时动画时间,默认为0.6s
+ */
+@property (nonatomic,assign) CGFloat animalTime;
 
 /**
  *  @author ZY, 15-04-26
