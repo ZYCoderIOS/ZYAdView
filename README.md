@@ -1,7 +1,6 @@
 ![Screenshots_Row](https://github.com/ZYCoderIOS/ZYAdView/blob/master/AdView/screenshot/screentshot.png)
 
 
-IOS学习群:461808115
 广告循环滚动
 类似淘宝，网易新闻首页广告栏效果，需要sdwebImage的支持，仅仅只需要额外导入一个类文件！使用方法如下：
     CGFloat width = [UIScreen mainScreen].bounds.size.width;
