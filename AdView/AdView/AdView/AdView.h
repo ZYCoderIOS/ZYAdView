@@ -39,12 +39,9 @@ typedef NS_ENUM(NSUInteger, AdTitleShowStyle)
     CGFloat _adMoveTime;
 }
 
-/**
- *  @author ZY, 15-04-26
- *
- *  @brief  这个计时器需要特殊处理,否则会照成内存泄露
+/*
+  可以在adScrollView上添加一些不随广告滚动的控件
  */
-@property (assign, nonatomic) NSTimer *moveTimer;
 @property (retain,nonatomic,readonly) UIScrollView * adScrollView;
 @property (retain,nonatomic,readonly) UIPageControl * pageControl;
 @property (retain,nonatomic,readonly) NSArray * imageLinkURL;
@@ -76,8 +73,6 @@ typedef NS_ENUM(NSUInteger, AdTitleShowStyle)
  */
 @property (nonatomic,assign) BOOL isNeedCycleRoll;
 
-
-
 /**
  *  @author ZY, 15-04-26
  *
@@ -107,19 +102,6 @@ typedef NS_ENUM(NSUInteger, AdTitleShowStyle)
  *  @param adTitleStyle 标题显示风格
  */
 - (void)setAdTitleArray:(NSArray *)adTitleArray withShowStyle:(AdTitleShowStyle)adTitleStyle;
-
-/**
- *  @author ZY, 15-04-26
- *
- *  @brief  创建AdView对象
- *
- *  @param frame                设置Frame
- *  @param imageLinkURL         图片链接地址数组,数组的每一项均为字符串
- *  @param PageControlShowStyle PageControl显示位置
- *  @param object 控件在那个类文件中
- *  @return 广告视图
- */
-//+ (id)adScrollViewWithFrame:(CGRect)frame imageLinkURL:(NSArray *)imageLinkURL pageControlShowStyle:(UIPageControlShowStyle)PageControlShowStyle;
 
 /**
  *  @author ZY, 15-04-26

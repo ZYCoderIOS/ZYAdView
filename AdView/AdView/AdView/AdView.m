@@ -15,7 +15,6 @@
 //
 
 #import "AdView.h"
-//#import "UIImageView+AFNetworking.h"
 #import "UIImageView+WebCache.h"
 //广告的宽度
 #define kAdViewWidth  _adScrollView.bounds.size.width
@@ -30,8 +29,7 @@
     UIImageView * _leftImageView;
     UIImageView * _centerImageView;
     UIImageView * _rightImageView;
-    //循环滚动的周期时间
-    
+
     //用于确定滚动式由人导致的还是计时器到了,系统帮我们滚动的,YES,则为系统滚动,NO则为客户滚动(ps.在客户端中客户滚动一个广告后,这个广告的计时器要归0并重新计时)
     BOOL _isTimeUp;
 }
@@ -39,7 +37,7 @@
 @property (nonatomic,assign) NSUInteger centerImageIndex;
 @property (nonatomic,assign) NSUInteger leftImageIndex;
 @property (nonatomic,assign) NSUInteger rightImageIndex;
-
+@property (assign,nonatomic,readonly) NSTimer *moveTimer;
 @property (retain,nonatomic,readonly) UIImageView * leftImageView;
 @property (retain,nonatomic,readonly) UIImageView * centerImageView;
 @property (retain,nonatomic,readonly) UIImageView * rightImageView;
@@ -95,7 +93,7 @@
     if (!newSuperview)
     {
         [self.moveTimer invalidate];
-        self.moveTimer = nil;
+        moveTimer = nil;
     }
     else
     {
