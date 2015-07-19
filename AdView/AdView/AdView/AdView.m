@@ -41,6 +41,7 @@
 @property (retain,nonatomic,readonly) UIImageView * leftImageView;
 @property (retain,nonatomic,readonly) UIImageView * centerImageView;
 @property (retain,nonatomic,readonly) UIImageView * rightImageView;
+@property (nonatomic,strong) NSArray * models;
 @end
 
 @implementation AdView
@@ -164,6 +165,24 @@
     return adView;
 }
 
++ (id)adScrollViewWithFrame:(CGRect)frame modelArr:(NSArray *)modelArr imagePropertyName:(NSString *)imageName pageControlShowStyle:(UIPageControlShowStyle)PageControlShowStyle
+{
+    if (modelArr.count==0)
+        return nil;
+    
+    NSMutableArray * imagePaths = [[NSMutableArray alloc]init];
+    for (id  model in modelArr)
+    {
+        NSString * path = [model valueForKey:imageName];
+        if (path==nil)
+            path = @"";
+        [imagePaths addObject:path];
+    }
+    AdView * adView = [AdView adScrollViewWithFrame:frame imageLinkURL:imagePaths   pageControlShowStyle:PageControlShowStyle];
+    adView.models = modelArr;
+    return adView;
+}
+
 #pragma mark - 设置广告所使用的图片(名字)
 - (void)setimageLinkURL:(NSArray *)imageLinkURL
 {
@@ -222,6 +241,21 @@
     _centerAdLabel.text = _adTitleArray[centerImageIndex];
 }
 
+- (void)setAdTitlePropertyName:(NSString *)titleName withShowStyle:(AdTitleShowStyle)adTitleStyle
+{
+    if (!self.models)
+        return;
+    NSMutableArray * titleArr = [[NSMutableArray alloc]init];
+    for (int i = 0; i < self.models.count; i++)
+    {
+        id model = self.models[i];
+        NSString * titleStr = [model valueForKey:titleName];
+        if (titleStr==nil)
+            titleStr = @"";
+        [titleArr addObject:titleStr];
+    }
+    [self setAdTitleArray:titleArr withShowStyle:adTitleStyle];
+}
 
 #pragma mark - 创建pageControl,指定其显示样式
 - (void)setPageControlShowStyle:(UIPageControlShowStyle)PageControlShowStyle
@@ -346,6 +380,11 @@
     if (_callBack)
     {
         _callBack(centerImageIndex,_imageLinkURL[centerImageIndex]);
+    }
+    
+    if (self.models&&_callBackForModel)
+    {
+        _callBackForModel(self.models[centerImageIndex]);
     }
 }
 @end

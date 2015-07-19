@@ -93,6 +93,12 @@ typedef NS_ENUM(NSUInteger, AdTitleShowStyle)
  */
 @property (nonatomic,strong) void (^callBack)(NSInteger index,NSString * imageURL);
 
+/*
+ 通过模型获取当前被点击对象,并回传当前图片的模型,只有在使用模型初始化AdView时有效
+*/
+@property (nonatomic,strong) void (^callBackForModel)(id model);
+
+
 /**
  *  @author ZY, 15-04-26
  *
@@ -102,6 +108,11 @@ typedef NS_ENUM(NSUInteger, AdTitleShowStyle)
  *  @param adTitleStyle 标题显示风格
  */
 - (void)setAdTitleArray:(NSArray *)adTitleArray withShowStyle:(AdTitleShowStyle)adTitleStyle;
+
+/*
+  使用模型创建对象的时候可以使用该方法,创建标题,只需要指出文字在模型中对应的名称
+ */
+- (void)setAdTitlePropertyName:(NSString *)titleName withShowStyle:(AdTitleShowStyle)adTitleStyle;
 
 /**
  *  @author ZY, 15-04-26
@@ -129,4 +140,12 @@ typedef NS_ENUM(NSUInteger, AdTitleShowStyle)
  *  @return 广告视图
  */
 + (id)adScrollViewWithFrame:(CGRect)frame localImageLinkURL:(NSArray *)imageLinkURL pageControlShowStyle:(UIPageControlShowStyle)PageControlShowStyle;
+
+/**
+ *  传递模型数组,每个模型中都拥有自己的图片链接属性
+ *
+ *  @param modelArr             模型数组
+ *  @param imageName            属性名称
+ */
++ (id)adScrollViewWithFrame:(CGRect)frame modelArr:(NSArray *)modelArr imagePropertyName:(NSString *)imageName pageControlShowStyle:(UIPageControlShowStyle)PageControlShowStyle;
 @end

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5306435B1B56937400A9287B /* Demo3ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5306435A1B56937400A9287B /* Demo3ViewController.m */; };
 		532A320D1B1865F6004F0CF8 /* Demo2Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = 532A320C1B1865F6004F0CF8 /* Demo2Controller.m */; };
 		532A320F1B186666004F0CF8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 532A320E1B186666004F0CF8 /* Main.storyboard */; };
 		532A32191B186772004F0CF8 /* 123.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 532A32161B186772004F0CF8 /* 123.jpg */; };
@@ -29,6 +30,7 @@
 		534F03751B08590C00B2B2C6 /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 534F03641B08590C00B2B2C6 /* UIImageView+WebCache.m */; };
 		534F03761B08590C00B2B2C6 /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 534F03661B08590C00B2B2C6 /* UIView+WebCacheOperation.m */; };
 		534F03781B085B5600B2B2C6 /* placeHoder.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 534F03771B085B5600B2B2C6 /* placeHoder.jpg */; };
+		5364571B1B5BAB4600403A5C /* ZYBanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 5364571A1B5BAB4600403A5C /* ZYBanner.m */; };
 		53E54D001AED3CF10077D764 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 53E54CFF1AED3CF10077D764 /* main.m */; };
 		53E54D031AED3CF10077D764 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 53E54D021AED3CF10077D764 /* AppDelegate.m */; };
 		53E54D0E1AED3CF10077D764 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53E54D0C1AED3CF10077D764 /* LaunchScreen.xib */; };
@@ -48,6 +50,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		530643591B56937400A9287B /* Demo3ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Demo3ViewController.h; sourceTree = "<group>"; };
+		5306435A1B56937400A9287B /* Demo3ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Demo3ViewController.m; sourceTree = "<group>"; };
 		532A320B1B1865F6004F0CF8 /* Demo2Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Demo2Controller.h; sourceTree = "<group>"; };
 		532A320C1B1865F6004F0CF8 /* Demo2Controller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Demo2Controller.m; sourceTree = "<group>"; };
 		532A320E1B186666004F0CF8 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -88,6 +92,8 @@
 		534F03651B08590C00B2B2C6 /* UIView+WebCacheOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WebCacheOperation.h"; sourceTree = "<group>"; };
 		534F03661B08590C00B2B2C6 /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
 		534F03771B085B5600B2B2C6 /* placeHoder.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = placeHoder.jpg; sourceTree = "<group>"; };
+		536457191B5BAB4600403A5C /* ZYBanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYBanner.h; sourceTree = "<group>"; };
+		5364571A1B5BAB4600403A5C /* ZYBanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYBanner.m; sourceTree = "<group>"; };
 		53E54CFA1AED3CF10077D764 /* AdView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AdView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		53E54CFE1AED3CF10077D764 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		53E54CFF1AED3CF10077D764 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -128,6 +134,8 @@
 				53E54D241AED3D0E0077D764 /* Demo1Controller.m */,
 				532A320B1B1865F6004F0CF8 /* Demo2Controller.h */,
 				532A320C1B1865F6004F0CF8 /* Demo2Controller.m */,
+				530643591B56937400A9287B /* Demo3ViewController.h */,
+				5306435A1B56937400A9287B /* Demo3ViewController.m */,
 			);
 			name = DemoVC;
 			sourceTree = "<group>";
@@ -172,6 +180,15 @@
 			path = SDWebImage;
 			sourceTree = "<group>";
 		};
+		536457181B5BAB3100403A5C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				536457191B5BAB4600403A5C /* ZYBanner.h */,
+				5364571A1B5BAB4600403A5C /* ZYBanner.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		53E54CF11AED3CF10077D764 = {
 			isa = PBXGroup;
 			children = (
@@ -193,6 +210,7 @@
 		53E54CFC1AED3CF10077D764 /* AdView */ = {
 			isa = PBXGroup;
 			children = (
+				536457181B5BAB3100403A5C /* Model */,
 				532A320A1B1865DA004F0CF8 /* DemoVC */,
 				534F03451B08590C00B2B2C6 /* SDWebImage */,
 				53E54D441AED3D250077D764 /* AdView */,
@@ -352,6 +370,7 @@
 				534F036D1B08590C00B2B2C6 /* SDWebImageDownloaderOperation.m in Sources */,
 				53E54D251AED3D0E0077D764 /* Demo1Controller.m in Sources */,
 				534F036A1B08590C00B2B2C6 /* SDWebImageCompat.m in Sources */,
+				5306435B1B56937400A9287B /* Demo3ViewController.m in Sources */,
 				534F03711B08590C00B2B2C6 /* UIImage+GIF.m in Sources */,
 				534F036F1B08590C00B2B2C6 /* SDWebImagePrefetcher.m in Sources */,
 				53E54D031AED3CF10077D764 /* AppDelegate.m in Sources */,
@@ -366,6 +385,7 @@
 				53E54D471AED3D250077D764 /* AdView.m in Sources */,
 				532A320D1B1865F6004F0CF8 /* Demo2Controller.m in Sources */,
 				534F036E1B08590C00B2B2C6 /* SDWebImageManager.m in Sources */,
+				5364571B1B5BAB4600403A5C /* ZYBanner.m in Sources */,
 				534F036B1B08590C00B2B2C6 /* SDWebImageDecoder.m in Sources */,
 				534F03691B08590C00B2B2C6 /* SDImageCache.m in Sources */,
 			);
@@ -486,6 +506,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = AdView/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -496,6 +517,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = AdView/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
