@@ -44,8 +44,8 @@ typedef NS_ENUM(NSUInteger, AdTitleShowStyle)
  */
 @property (retain,nonatomic,readonly) UIScrollView * adScrollView;
 @property (retain,nonatomic,readonly) UIPageControl * pageControl;
-@property (retain,nonatomic,readonly) NSArray * imageLinkURL;
-@property (retain,nonatomic,readonly) NSArray * adTitleArray;
+@property (retain,nonatomic) NSArray * imageLinkURL;
+@property (retain,nonatomic) NSArray * adTitleArray;
 /**
  *  @author ZY, 15-05-17
  *

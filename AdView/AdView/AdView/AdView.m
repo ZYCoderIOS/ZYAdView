@@ -127,15 +127,18 @@
         return nil;
     
     AdView * adView = [[AdView alloc]initWithFrame:frame];
-    [adView setimageLinkURL:imageLinkURL];
-    [adView setPageControlShowStyle:PageControlShowStyle];
+    [adView setImageLinkURL:imageLinkURL];
+    adView.PageControlShowStyle = PageControlShowStyle;
     return adView;
 }
 
 + (id)adScrollViewWithFrame:(CGRect)frame imageLinkURL:(NSArray *)imageLinkURL placeHoderImageName:(NSString *)imageName pageControlShowStyle:(UIPageControlShowStyle)PageControlShowStyle
 {
     if (imageLinkURL.count==0)
+    {
         return nil;
+    }
+
     
     NSMutableArray * imagePaths = [[NSMutableArray alloc]init];
     for (NSString * imageName in imageLinkURL)
@@ -151,7 +154,11 @@
 + (id)adScrollViewWithFrame:(CGRect)frame localImageLinkURL:(NSArray *)imageLinkURL pageControlShowStyle:(UIPageControlShowStyle)PageControlShowStyle
 {
     if (imageLinkURL.count==0)
-        return nil;
+    {
+        AdView * adViwe = [[AdView alloc]initWithFrame:frame];
+        adViwe.backgroundColor = [UIColor redColor];
+        return adViwe;
+    }
     
     NSMutableArray * imagePaths = [[NSMutableArray alloc]init];
     for (NSString * imageName in imageLinkURL)
@@ -168,7 +175,11 @@
 + (id)adScrollViewWithFrame:(CGRect)frame modelArr:(NSArray *)modelArr imagePropertyName:(NSString *)imageName pageControlShowStyle:(UIPageControlShowStyle)PageControlShowStyle
 {
     if (modelArr.count==0)
-        return nil;
+    {
+        AdView * adViwe = [[AdView alloc]initWithFrame:frame];
+        adViwe.backgroundColor = [UIColor redColor];
+        return adViwe;
+    }
     
     NSMutableArray * imagePaths = [[NSMutableArray alloc]init];
     for (id  model in modelArr)
@@ -184,22 +195,28 @@
 }
 
 #pragma mark - 设置广告所使用的图片(名字)
-- (void)setimageLinkURL:(NSArray *)imageLinkURL
+- (void)setImageLinkURL:(NSArray *)imageLinkURL
 {
     _imageLinkURL = imageLinkURL;
     leftImageIndex = imageLinkURL.count-1;
     centerImageIndex = 0;
     rightImageIndex = 1;
+    
     if (imageLinkURL.count==1)
     {
         _adScrollView.scrollEnabled = NO;
         rightImageIndex = 0;
     }
-    
+    _pageControl.numberOfPages = _imageLinkURL.count;
+    _pageControl.currentPage = 0;
+
     [_leftImageView sd_setImageWithURL:imageLinkURL[leftImageIndex] placeholderImage:self.placeHoldImage];
     [_centerImageView sd_setImageWithURL:imageLinkURL[centerImageIndex] placeholderImage:self.placeHoldImage];
     [_rightImageView sd_setImageWithURL:imageLinkURL[rightImageIndex] placeholderImage:self.placeHoldImage];
+    [self setPageControlShowStyle:self.PageControlShowStyle];
 }
+
+
 
 #pragma mark - 设置每个对应广告对应的广告语
 - (void)setAdTitleArray:(NSArray *)adTitleArray withShowStyle:(AdTitleShowStyle)adTitleStyle
@@ -262,6 +279,7 @@
 {
     if (PageControlShowStyle == UIPageControlShowStyleNone||_imageLinkURL.count<=1)
         return;
+    [_pageControl removeFromSuperview];
     
     _pageControl = [[UIPageControl alloc]init];
     _pageControl.numberOfPages = _imageLinkURL.count;
